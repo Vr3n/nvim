@@ -10,6 +10,9 @@ nnoremap("<leader>pv", "<cmd>NvimTreeToggle<CR>")
 nnoremap("<leader>q", "<cmd>:q<CR>")
 nnoremap("<leader>w", "<cmd>:w<CR>")
 
+-- navigation keymaps.
+nnoremap("<leader>6", "<C-6>")
+
 -- Split Window Pane Remaps.
 nnoremap("sj", "<C-W><C-J>")
 nnoremap("sk", "<C-W><C-K>")
@@ -40,3 +43,18 @@ nnoremap("<leader>gll", "<cmd>G log<CR>")
 nnoremap("<leader>gd", "<cmd>G diff<CR>")
 nnoremap("<leader>gds", "<cmd>Gdiffsplit<CR>")
 nnoremap("<leader>gbb", "<cmd>G blame<CR>")
+
+
+-- TermToggle Remps.
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
