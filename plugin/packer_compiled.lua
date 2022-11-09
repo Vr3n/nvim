@@ -189,6 +189,26 @@ _G.packer_plugins = {
     path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-signify"] = {
+    loaded = true,
+    path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-signify",
+    url = "https://github.com/mhinz/vim-signify"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
   ["vscode.nvim"] = {
     loaded = true,
     path = "C:\\Users\\vicky\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",

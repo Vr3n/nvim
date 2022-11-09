@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
   }
 
   -- Nvim Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate", }
+  use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
 
   -- nvim-tree
   use { 'nvim-tree/nvim-web-devicons' }
@@ -62,5 +62,17 @@ return require('packer').startup(function(use)
 
   -- java lsp
   use { 'mfussenegger/nvim-jdtls' }
+
+  -- vim surround
+  use { "tpope/vim-surround" }
+
+  -- git fugitive
+  use { "tpope/vim-fugitive" }
+
+  -- Easy motion.
+  use { "easymotion/vim-easymotion" }
+
+  -- Signify
+  use { "mhinz/vim-signify" }
 
 end)
