@@ -30,5 +30,9 @@ nnoremap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nnoremap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 
 -- git fugitive remaps.
-nnoremap("<leader>gg", "<cmd>:G<CR>")
-nnoremap("<leader>gc", "<cmd>:Git commit<CR>")
+nnoremap("<leader>gs", "<cmd>G<CR>")
+nnoremap("<leader>gc", "<cmd>G commit<CR>")
+nnoremap("<leader>gll", "<cmd>G log<CR>")
+nnoremap("<leader>gd", "<cmd>G diff<CR>")
+nnoremap("<leader>gds", "<cmd>Gdiffsplit<CR>")
+nnoremap("<leader>gbb", "<cmd>G blame<CR>")
