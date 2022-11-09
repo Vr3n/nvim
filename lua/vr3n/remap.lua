@@ -29,4 +29,6 @@ nnoremap('<leader>ff', "<cmd>lua require'telescope.builtin'.find_files(require('
 nnoremap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nnoremap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 
-
+-- git fugitive remaps.
+nnoremap("<leader>gg", "<cmd>:G<CR>")
+nnoremap("<leader>gc", "<cmd>:Git commit<CR>")
