@@ -6,7 +6,7 @@ end
 
 toggleterm.setup({
     size = 20,
-    open_mapping = [[<C-\\>]],
+    open_mapping = [[<C-\>]],
     hide_numbers = true,
     persist_size = true,
     direction = "float",
@@ -18,3 +18,4 @@ toggleterm.setup({
         winblend = 0,
     },
 })
+
