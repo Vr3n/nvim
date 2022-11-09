@@ -17,6 +17,9 @@ nnoremap("sl", "<C-W><C-L>")
 nnoremap("sh", "<C-W><C-h>")
 nnoremap("<leader>sh", "<C-W>s")
 nnoremap("<leader>sv", "<C-W>v")
+nnoremap("<leader>--", "<C-W>_")
+nnoremap("<leader>|", "<C-W>|")
+nnoremap("<leader>=", "<C-W>=")
 
 -- Escape Key remap.
 inoremap('jk', '<Esc>')
@@ -27,6 +30,7 @@ nnoremap("<C-Z>", "<nop>")
 -- Telescope Remaps.
 nnoremap('<leader>ff', "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>")
 nnoremap('<leader>fg', '<cmd>Telescope live_grep<cr>')
+nnoremap('<leader>fb', "<cmd>Telescope buffers<cr>")
 nnoremap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 
 -- git fugitive remaps.

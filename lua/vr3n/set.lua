@@ -21,6 +21,11 @@ vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
+vim.cmd [[
+    set splitbelow
+    set splitright
+]]
+
 require('Comment').setup({
     opleader = {
         -- line-comment keymap
