@@ -74,10 +74,17 @@ return require('packer').startup(function(use)
 
   -- Signify
   use { "mhinz/vim-signify" }
+
   -- toggleterm
   use {"akinsho/toggleterm.nvim", tag = '*' }
-    
+
   -- tagbar
    use { "preservim/tagbar" }
+
+  -- Bufferline
+  use { 'akinsho/bufferline.nvim' }
+
+  -- bbye
+  use { "moll/vim-bbye" }
 
 end)

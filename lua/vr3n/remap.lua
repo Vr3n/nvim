@@ -7,8 +7,8 @@ local inoremap = require("vr3n.keymap").inoremap
 nnoremap("<leader>pv", "<cmd>NvimTreeToggle<CR>")
 
 -- File Modification Remaps.
-nnoremap("<leader>q", "<cmd>:q<CR>")
-nnoremap("<leader>w", "<cmd>:w<CR>")
+nnoremap("<leader>q", "<cmd>Bdelete<CR>")
+nnoremap("<leader>w", "<cmd>w<CR>")
 
 -- navigation keymaps.
 nnoremap("<leader>6", "<C-6>")
