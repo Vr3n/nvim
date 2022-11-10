@@ -80,11 +80,4 @@ return require('packer').startup(function(use)
 
   -- tagbar
    use { "preservim/tagbar" }
-
-  -- Bufferline
-  use { 'akinsho/bufferline.nvim' }
-
-  -- bbye
-  use { "moll/vim-bbye" }
-
 end)
