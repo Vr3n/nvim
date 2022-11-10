@@ -76,5 +76,8 @@ return require('packer').startup(function(use)
   use { "mhinz/vim-signify" }
   -- toggleterm
   use {"akinsho/toggleterm.nvim", tag = '*' }
+    
+  -- tagbar
+   use { "preservim/tagbar" }
 
 end)

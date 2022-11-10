@@ -206,7 +206,6 @@ require("lspconfig")['intelephense'].setup({
 })
 
 local lspconfig = require("lspconfig")
-local configs = require('lspconfig.configs')
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.emmet_ls.setup({
