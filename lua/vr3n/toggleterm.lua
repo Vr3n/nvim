@@ -11,7 +11,7 @@ toggleterm.setup({
     persist_size = true,
     direction = "float",
     close_on_exit = true,
-    shell = "pwsh.exe",
+    shell = vim.o.shell,
     insert_mappings = true,
     float_opts = {
         border = "curved",
