@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
     url = "https://github.com/mfussenegger/nvim-jdtls"
   },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
