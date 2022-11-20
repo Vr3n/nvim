@@ -46,21 +46,6 @@ require('nvim-tree').setup({
     }
 })
 
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
-})
-
--- mason + lspconf 
-require("mason-lspconfig").setup()
-
-
-
 -- lsp kind
 local lspkind = require('lspkind')
 

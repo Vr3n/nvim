@@ -56,5 +56,9 @@ function _G.set_terminal_keymaps()
   vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
 end
 
+-- null-ls formatter remap.
+nnoremap('<leader>fr', "<cmd>lua vim.lsp.buf.formatting_sync()<cr>")
+
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+

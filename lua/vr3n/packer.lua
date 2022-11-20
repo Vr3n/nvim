@@ -96,7 +96,8 @@ return require('packer').startup(function(use)
    use { "preservim/tagbar" }
 
   -- nvim-linter
-  use 'mfussenegger/nvim-lint'
+  use { "jose-elias-alvarez/null-ls.nvim" }
+  use { "jayp0521/mason-null-ls.nvim" }
 
    if packer_bootstrap then
        require('packer').sync()
