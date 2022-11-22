@@ -12,6 +12,7 @@ configs.setup({
 	sources = {
 		formatting.prettier,
 		formatting.stylua,
+		formatting.autopep8,
 		diagnostics.eslint_d,
 		diagnostics.flake8,
 	},
