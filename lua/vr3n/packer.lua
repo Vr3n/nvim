@@ -21,8 +21,8 @@ return require("packer").startup(function(use)
 	-- Color Scheme (AYU)
 	use({ "Shatur/neovim-ayu" })
 
-    -- color scheme (Vscode)
-    use { "Mofiqul/vscode.nvim" }
+	-- color scheme (Vscode)
+	use({ "Mofiqul/vscode.nvim" })
 
 	-- Telescope (Navigation)
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
@@ -77,6 +77,9 @@ return require("packer").startup(function(use)
 
 	-- java lsp
 	use({ "mfussenegger/nvim-jdtls" })
+
+	-- Adds extra functionality over rust analyzer
+	use("simrat39/rust-tools.nvim")
 
 	-- vim surround
 	use({ "tpope/vim-surround" })
