@@ -56,6 +56,9 @@ return require("packer").startup(function(use)
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 
+	-- nvim dap.
+	use({ "mfussenegger/nvim-dap" })
+
 	-- nvim - cmp
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer" })
