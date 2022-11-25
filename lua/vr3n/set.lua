@@ -20,6 +20,10 @@ vim.opt.scrolloff = 8
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
 vim.cmd([[
     set splitbelow
     set splitright
@@ -38,4 +42,11 @@ require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,
 	},
+})
+
+require("indent_blankline").setup({
+	show_current_context = true,
+	show_current_context_start = true,
+	show_end_of_line = true,
+	space_char_blankline = " ",
 })

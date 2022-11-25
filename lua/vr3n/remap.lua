@@ -76,3 +76,6 @@ vim.keymap.set(
 	"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>"
 )
 vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.open()<CR>")
+
+-- DAP UI REmap.
+vim.keymap.set("n", "<leader>dbv", "<cmd>lua require('dapui').toggle()<CR>")
