@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "theHamsta/nvim-dap-virtual-text" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
+	use("mfussenegger/nvim-dap-python")
 
 	-- nvim - cmp
 	use({ "hrsh7th/cmp-nvim-lsp" })
