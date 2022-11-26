@@ -113,6 +113,9 @@ return require("packer").startup(function(use)
 	-- nvim line
 	use("lukas-reineke/indent-blankline.nvim")
 
+	-- nvim exrc
+	use("MunifTanjim/exrc.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

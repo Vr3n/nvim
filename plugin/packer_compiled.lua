@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["exrc.nvim"] = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/exrc.nvim",
+    url = "https://github.com/MunifTanjim/exrc.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/friendly-snippets",

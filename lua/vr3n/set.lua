@@ -29,6 +29,15 @@ vim.cmd([[
     set splitright
 ]])
 
+require("exrc").setup({
+	files = {
+		".nvimrc.lua",
+		".nvimrc",
+		".exrc.lua",
+		".exrc",
+	},
+})
+
 require("Comment").setup({
 	opleader = {
 		-- line-comment keymap
