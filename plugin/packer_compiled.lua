@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
