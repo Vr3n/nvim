@@ -37,7 +37,8 @@ return require("packer").startup(function(use)
 	})
 
 	-- Nvim Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({ "nvim-treesitter/nvim-treesitter" })
+	use({ "nvim-treesitter/playground" })
 
 	-- nvim-tree
 	use({ "nvim-tree/nvim-web-devicons" })
