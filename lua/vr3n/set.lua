@@ -59,6 +59,9 @@ require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,
 	},
+	git = {
+		ignore = false,
+	},
 })
 
 require("indent_blankline").setup({

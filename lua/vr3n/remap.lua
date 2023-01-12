@@ -1,50 +1,67 @@
--- Custom Keymaps function.
-local nnoremap = require("vr3n.keymap").nnoremap
-local inoremap = require("vr3n.keymap").inoremap
-
 -- Net-RW Remaps.
-nnoremap("<leader>pv", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>")
 
 -- File Modification Remaps.
-nnoremap("<leader>q", "<cmd>q<CR>")
-nnoremap("<leader>w", "<cmd>w<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 
 -- navigation keymaps.
-nnoremap("<leader>6", "<C-6>")
+vim.keymap.set("n", "<leader>6", "<C-6>")
+
+-- move commands to move when highlighted.
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<c-d>", "<c-d>zz")
+vim.keymap.set("n", "<c-u>", "<c-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Copy between clipboard and vim.
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
+
+-- Won't take over your clipboard.
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- Split Window Pane Remaps.
-nnoremap("sj", "<C-W><C-J>")
-nnoremap("sk", "<C-W><C-K>")
-nnoremap("sl", "<C-W><C-L>")
-nnoremap("sh", "<C-W><C-h>")
-nnoremap("<leader>sh", "<C-W>s")
-nnoremap("<leader>sv", "<C-W>v")
-nnoremap("<leader>--", "<C-W>_")
-nnoremap("<leader>|", "<C-W>|")
-nnoremap("<leader>=", "<C-W>=")
+vim.keymap.set("n", "sj", "<C-W><C-J>")
+vim.keymap.set("n", "sk", "<C-W><C-K>")
+vim.keymap.set("n", "sl", "<C-W><C-L>")
+vim.keymap.set("n", "sh", "<C-W><C-h>")
+vim.keymap.set("n", "<leader>sh", "<C-W>s")
+vim.keymap.set("n", "<leader>sv", "<C-W>v")
+vim.keymap.set("n", "<leader>--", "<C-W>_")
+vim.keymap.set("n", "<leader>|", "<C-W>|")
+vim.keymap.set("n", "<leader>=", "<C-W>=")
 
 -- Escape Key remap.
-inoremap("jk", "<Esc>")
+vim.keymap.set("i", "jk", "<Esc>")
+
+vim.keymap.set("n", "Q", "<nop>")
 
 -- ctrl z disable.
-nnoremap("<C-Z>", "<nop>")
+vim.keymap.set("n", "<C-Z>", "<nop>")
 
 -- Telescope Remaps.
-nnoremap(
+vim.keymap.set(
+	"n",
 	"<leader>ff",
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>"
 )
-nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>")
-nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>")
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 
 -- git fugitive remaps.
-nnoremap("<leader>gs", "<cmd>G<CR>")
-nnoremap("<leader>gc", "<cmd>G commit<CR>")
-nnoremap("<leader>gll", "<cmd>G log<CR>")
-nnoremap("<leader>gd", "<cmd>G diff<CR>")
-nnoremap("<leader>gds", "<cmd>Gdiffsplit<CR>")
-nnoremap("<leader>gbb", "<cmd>G blame<CR>")
+vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>")
+vim.keymap.set("n", "<leader>gc", "<cmd>G commit<CR>")
+vim.keymap.set("n", "<leader>gll", "<cmd>G log<CR>")
+vim.keymap.set("n", "<leader>gd", "<cmd>G diff<CR>")
+vim.keymap.set("n", "<leader>gds", "<cmd>Gdiffsplit<CR>")
+vim.keymap.set("n", "<leader>gbb", "<cmd>G blame<CR>")
 
 -- TermToggle Remps.
 function _G.set_terminal_keymaps()
@@ -58,7 +75,7 @@ function _G.set_terminal_keymaps()
 end
 
 -- null-ls formatter remap.
-nnoremap("<leader>fr", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 10000 })<cr>")
+vim.keymap.set("n", "<leader>fr", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 10000 })<cr>")
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
