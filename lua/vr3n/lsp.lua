@@ -20,17 +20,42 @@ local on_attach = function(client, bufnr)
 end
 
 -- Pyright Setup
-require("lspconfig")["pyright"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
 
 -- Lua LSp Setup
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require("lspconfig")["sumneko_lua"].setup({
+local lspconfig = require("lspconfig")
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+	-- on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php" },
+	init_options = {
+		html = {
+			options = {
+				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+				["bem.enabled"] = true,
+			},
+		},
+	},
+})
+
+lspconfig.pyright.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.tsserver.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" },
+})
+
+lspconfig.sumneko_lua.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -56,27 +81,3 @@ require("lspconfig")["sumneko_lua"].setup({
 		},
 	},
 })
-
-require("lspconfig")["intelephense"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-local lspconfig = require("lspconfig")
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-lspconfig.emmet_ls.setup({
-	-- on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php" },
-	init_options = {
-		html = {
-			options = {
-				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-				["bem.enabled"] = true,
-			},
-		},
-	},
-})
-
-lspconfig.tsserver.setup({})

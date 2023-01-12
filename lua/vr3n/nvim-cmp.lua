@@ -7,11 +7,14 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- CMP config
 -- Set up nvim-cmp.
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.filetype_extend("javascript", { "javascriptreact", "typescriptreact" })
+			require("luasnip/loaders/from_vscode").lazy_load()
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
