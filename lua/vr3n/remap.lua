@@ -76,6 +76,7 @@ end
 
 -- null-ls formatter remap.
 vim.keymap.set("n", "<leader>fr", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 10000 })<cr>")
+vim.keymap.set("n", "<leader>k", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
