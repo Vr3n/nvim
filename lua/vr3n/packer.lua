@@ -24,6 +24,14 @@ return require("packer").startup(function(use)
 	-- color scheme (Vscode)
 	use({ "Mofiqul/vscode.nvim" })
 
+	use({
+		"windwp/nvim-autopairs",
+	})
+
+	use({
+		"windwp/nvim-ts-autotag",
+	})
+
 	-- Telescope (Navigation)
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({ "BurntSushi/ripgrep" })
