@@ -1,6 +1,9 @@
 -- Set up lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- rust tools lsp.
+local rt = require("rust-tools")
+
 -- LSp config
 local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -55,7 +58,7 @@ lspconfig.tsserver.setup({
 	cmd = { "typescript-language-server", "--stdio" },
 })
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -80,4 +83,8 @@ lspconfig.sumneko_lua.setup({
 			},
 		},
 	},
+})
+
+rt.setup({
+	on_attach = on_attach,
 })
