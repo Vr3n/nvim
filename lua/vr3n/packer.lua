@@ -24,6 +24,8 @@ return require("packer").startup(function(use)
 	-- color scheme (Vscode)
 	use({ "Mofiqul/vscode.nvim" })
 
+	use("navarasu/onedark.nvim")
+
 	use({
 		"windwp/nvim-autopairs",
 	})

@@ -60,7 +60,7 @@ vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>")
 vim.keymap.set("n", "<leader>gc", "<cmd>G commit<CR>")
 vim.keymap.set("n", "<leader>gll", "<cmd>G log<CR>")
 vim.keymap.set("n", "<leader>gd", "<cmd>G diff<CR>")
-vim.keymap.set("n", "<leader>gds", "<cmd>Gdiffsplit<CR>")
+vim.keymap.set("n", "<leader>gds", "<cmd>Gdiffsplit!<CR>")
 vim.keymap.set("n", "<leader>gbb", "<cmd>G blame<CR>")
 
 -- TermToggle Remps.
