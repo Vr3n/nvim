@@ -129,6 +129,9 @@ return require("packer").startup(function(use)
 	-- nvim exrc
 	use("MunifTanjim/exrc.nvim")
 
+	-- vim-prisma
+	use("prisma/vim-prisma")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

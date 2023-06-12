@@ -294,6 +294,11 @@ _G.packer_plugins = {
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-prisma"] = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/vim-prisma",
+    url = "https://github.com/prisma/vim-prisma"
+  },
   ["vim-signify"] = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/vim-signify",
