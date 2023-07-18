@@ -49,6 +49,11 @@ lspconfig.emmet_ls.setup({
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	settings = {
+		python = {
+			analysis = { diagnosticMode = "off", typeCheckingMode = "off" },
+		},
+	},
 })
 
 lspconfig.tsserver.setup({

@@ -132,6 +132,12 @@ return require("packer").startup(function(use)
 	-- vim-prisma
 	use("prisma/vim-prisma")
 
+	-- notify
+	use("rcarriga/nvim-notify")
+
+	-- magma python.
+	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
