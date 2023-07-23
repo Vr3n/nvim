@@ -98,3 +98,8 @@ lspconfig.lua_ls.setup({
 rt.setup({
 	on_attach = on_attach,
 })
+
+lspconfig.tailwindcss.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
