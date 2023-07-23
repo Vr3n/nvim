@@ -35,7 +35,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.emmet_ls.setup({
 	-- on_attach = on_attach,
 	capabilities = capabilities,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php" },
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php", "htmldjango" },
 	init_options = {
 		html = {
 			options = {
@@ -44,6 +44,11 @@ lspconfig.emmet_ls.setup({
 			},
 		},
 	},
+})
+
+lspconfig.clangd.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 lspconfig.pyright.setup({
