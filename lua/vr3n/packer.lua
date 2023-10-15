@@ -123,9 +123,6 @@ return require("packer").startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "jayp0521/mason-null-ls.nvim" })
 
-	-- nvim line
-	use("lukas-reineke/indent-blankline.nvim")
-
 	-- nvim exrc
 	use("MunifTanjim/exrc.nvim")
 
@@ -137,6 +134,8 @@ return require("packer").startup(function(use)
 
 	-- magma python.
 	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+
+	use("lukas-reineke/indent-blankline.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
