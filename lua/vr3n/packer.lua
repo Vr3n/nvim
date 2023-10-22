@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
 	})
 
 	-- Telescope (Navigation)
-	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
+	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({ "BurntSushi/ripgrep" })
 	use("ThePrimeagen/harpoon")
 	use("mbbill/undotree")
@@ -84,7 +84,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/nvim-cmp" })
 
 	-- lua snip
-	use({ "L3MON4D3/LuaSnip" })
+	use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp" })
 	use({ "saadparwaiz1/cmp_luasnip" })
 	-- friendly snippets.
 	use("rafamadriz/friendly-snippets")
