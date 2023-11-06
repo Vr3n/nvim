@@ -1,13 +1,14 @@
 vim.o.background = "dark"
 vim.g.transparent_background = true
+vim.cmd([[colorscheme tokyonight]])
 
-require("onedark").setup({
-	style = "darker",
-	transparent = true,
-	lualine = {
-		transparent = true,
-	},
-})
+-- require("onedark").setup({
+-- 	style = "darker",
+-- 	transparent = true,
+-- 	lualine = {
+-- 		transparent = true,
+-- 	},
+-- })
 
 require("onedark").load()
 
@@ -28,7 +29,7 @@ require("onedark").load()
 -- })
 
 require("lualine").setup({
-	options = { theme = "onedark" },
+	options = { theme = "tokyonight" },
 })
 
 -- Signify ColorScheme changes.

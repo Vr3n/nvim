@@ -84,7 +84,12 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/nvim-cmp" })
 
 	-- lua snip
-	use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp" })
+	use({
+		"L3MON4D3/LuaSnip",
+		tag = "v2.*",
+		run = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+	})
 	use({ "saadparwaiz1/cmp_luasnip" })
 	-- friendly snippets.
 	use("rafamadriz/friendly-snippets")

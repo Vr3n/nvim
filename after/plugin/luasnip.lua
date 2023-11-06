@@ -1,6 +1,8 @@
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 -- local s = ls.snippet
 -- local i = ls.insert_node
 -- local rep = require("luasnip.extras").rep
@@ -24,7 +26,6 @@ ls.config.set_config({
 	},
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
 -- Extending the snippets with Friendly snippets.
 ls.filetype_extend("ruby", { "rails" })
 ls.filetype_extend("python", { "python" })
@@ -32,6 +33,8 @@ ls.filetype_extend("php", { "php" })
 ls.filetype_extend("java", { "java" })
 ls.filetype_extend("typescript", { "typescript", "typescriptreact", "html" })
 ls.filetype_extend("javascript", { "javascript", "javascriptreact", "html" })
+ls.filetype_extend("htmldjango", { "typescript", "typescriptreact", "html" })
+ls.filetype_extend("djangohtml", { "typescript", "typescriptreact", "html" })
 
 -- <c-k> is my expansion key.
 -- This will expand the current item or jump to the next item within the snippet.
