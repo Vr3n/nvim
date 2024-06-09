@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/magma-nvim",
     url = "https://github.com/dccsillag/magma-nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -208,6 +213,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/home/vr3n/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-notify"] = {
     loaded = true,
