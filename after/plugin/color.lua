@@ -1,6 +1,5 @@
 vim.o.background = "dark"
 vim.g.transparent_background = true
-vim.cmd([[colorscheme vscode]])
 
 -- require("onedark").setup({
 -- 	style = "darker",
@@ -32,6 +31,8 @@ require("vscode").setup({
 require("lualine").setup({
 	options = { theme = "tokyonight" },
 })
+
+vim.cmd([[colorscheme vscode]])
 
 -- Signify ColorScheme changes.
 vim.cmd([[
