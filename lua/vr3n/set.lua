@@ -26,7 +26,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
 vim.opt.updatetime = 250
@@ -54,6 +53,7 @@ require("Comment").setup({
         block = "gb",
     },
 })
+
 
 require("nvim-tree").setup({
     view = {
