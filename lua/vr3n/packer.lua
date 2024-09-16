@@ -53,14 +53,12 @@ return require("packer").startup(function(use)
     use({ "nvim-treesitter/playground" })
 
     -- nvim-tree
-    use {
-        'nvim-tree/nvim-tree.lua',
+    use({
+        "nvim-tree/nvim-tree.lua",
         requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
+            "nvim-tree/nvim-web-devicons", -- optional, for file icons
         },
-    }
-    -- lsp config
-    use("neovim/nvim-lspconfig")
+    })
 
     -- mason (For lsp server installations)
     use({ "williamboman/mason.nvim" })
@@ -142,6 +140,27 @@ return require("packer").startup(function(use)
 
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommended if need floating window support
+
+    use("nvim-neotest/nvim-nio")
+
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+    })
+
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = {
+                "markdown",
+            }
+        end,
+        ft = { "markdown" },
+    })
 
     if packer_bootstrap then
         require("packer").sync()

@@ -1,6 +1,15 @@
 vim.o.background = "dark"
 vim.g.transparent_background = true
 
+-- require("tokyonight").setup({
+-- 	transparent = true,
+-- 	styles = {
+-- 		sidebars = "transparent",
+-- 		floats = "transparent",
+-- 	},
+-- })
+--
+
 require("onedark").setup({
     style = "darker",
     transparent = true,
@@ -8,8 +17,6 @@ require("onedark").setup({
         transparent = true,
     },
 })
---
--- require("onedark").load()
 
 -- local c = require("vscode.colors")
 
