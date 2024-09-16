@@ -46,14 +46,25 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-Z>", "<nop>")
 
 -- Telescope Remaps.
+local builtin = require("telescope.builtin")
 vim.keymap.set(
     "n",
     "<leader>ff",
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>"
 )
+vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>vh", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>pws", function()
+    local word = vim.fn.expand("<cword>")
+    builtin.grep_string({ search = word })
+end)
+vim.keymap.set("n", "<leader>ps", function()
+    builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+
+
 
 -- git fugitive remaps.
 vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>")
