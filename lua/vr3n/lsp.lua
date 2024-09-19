@@ -64,7 +64,7 @@ lspconfig.pyright.setup({
     },
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
