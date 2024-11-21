@@ -29,3 +29,5 @@ configs.setup({
     },
     indent = { enable = true, disable = { "yaml" } },
 })
+
+:

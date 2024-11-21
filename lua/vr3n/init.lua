@@ -1,4 +1,5 @@
 require("vr3n.set")
+require("vr3n.lazy")
 require("vr3n.remap")
 require("vr3n.lsp")
 require("vr3n.mason")

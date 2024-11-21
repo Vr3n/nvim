@@ -19,3 +19,39 @@ toggleterm.setup({
     },
 })
 
+
+require("exrc").setup({
+    files = {
+        ".nvimrc.lua",
+        ".nvimrc",
+        ".exrc.lua",
+        ".exrc",
+    },
+})
+
+require("Comment").setup({
+    opleader = {
+        -- line-comment keymap
+        line = "gc",
+        -- block comment keymap.
+        block = "gb",
+    },
+})
+
+
+require("nvim-tree").setup({
+    view = {
+        adaptive_size = true,
+    },
+    git = {
+        ignore = false,
+    },
+})
+
+require("ibl").setup({})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function() vim.highlight.on_yank() end,
+})
