@@ -34,7 +34,7 @@ local plugins = {
     },
 
     {
-        "windwp/nvim-ts-autoversion",
+        "windwp/nvim-ts-autotag",
     },
 
     -- Telescope Navigation
@@ -61,6 +61,8 @@ local plugins = {
             "nvim-tree/nvim-web-devicons", -- lazyional, for file icons
         },
     },
+
+    "neovim/nvim-lspconfig",
 
     -- mason For lsp server installations
     { "williamboman/mason.nvim" },
@@ -120,7 +122,7 @@ local plugins = {
     { "akinsho/toggleterm.nvim", version = "*" },
 
     -- versionbar
-    { "preservim/versionbar" },
+    { "preservim/tagbar" },
 
     -- nvim-linter
     { "jose-elias-alvarez/null-ls.nvim" },
