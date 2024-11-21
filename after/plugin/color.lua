@@ -11,11 +11,11 @@ vim.g.transparent_background = true
 --
 
 require("onedark").setup({
-    style = "darker",
-    transparent = true,
-    lualine = {
-        transparent = true,
-    },
+	style = "darker",
+	transparent = true,
+	lualine = {
+		transparent = true,
+	},
 })
 
 -- local c = require("vscode.colors")
@@ -36,7 +36,7 @@ require("onedark").setup({
 }) ]]
 
 require("lualine").setup({
-    options = { theme = "onedark" },
+	options = { theme = "onedark" },
 })
 
 vim.cmd([[colorscheme onedark]])
