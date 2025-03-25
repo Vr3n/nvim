@@ -13,7 +13,6 @@ configs.setup({
 		formatting.prettier,
 		formatting.stylua,
 		formatting.autopep8,
-		diagnostics.eslint_d,
 		diagnostics.ruff,
 	},
 	on_attach = function(client, bufnr)

@@ -46,6 +46,5 @@ mason_nullls.setup({
 	ensure_installed = {
 		"prettier",
 		"stylua",
-		"eslint",
 	},
 })
