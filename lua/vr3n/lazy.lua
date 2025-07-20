@@ -139,15 +139,16 @@ local plugins = {
 
 	-- magma python.
 	{ "dccsillag/magma-nvim", build = ":UpdateRemotePlugins" },
-
 	"lukas-reineke/indent-blankline.nvim",
 
 	"ray-x/go.nvim",
 	"ray-x/guihua.lua", -- recommended if need floating window support
 
-	"nvim-neotest/nvim-nio",
+	{ "nvim-neotest/nvim-nio" },
 
 	{ "christoomey/vim-tmux-navigator", lazy = false },
+
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 }
 
 opts = {
