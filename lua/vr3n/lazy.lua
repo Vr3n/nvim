@@ -75,6 +75,7 @@ local plugins = {
 	{ "theHamsta/nvim-dap-virtual-text" },
 	{ "nvim-telescope/telescope-dap.nvim" },
 	"mfussenegger/nvim-dap-python",
+	"ldelossa/nvim-dap-projects",
 
 	-- nvim - cmp
 	{ "hrsh7th/cmp-nvim-lsp" },

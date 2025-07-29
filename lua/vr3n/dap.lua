@@ -31,7 +31,7 @@ vim.fn.sign_define("DapStopped", {
 --
 local py = require("dap-python")
 
-py.setup("~/.virtualenvs/debugpy/bin/python3", {
+py.setup("uv", {
 	include_configs = true,
 	console = "internalConsole",
 })
