@@ -54,14 +54,10 @@ lspconfig.clangd.setup({
 	capabilities = capabilities,
 })
 
-lspconfig.basedpyright.setup({
+lspconfig.ruff.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	settings = {
-		basedpyright = {
-			typeCheckingMode = "standard",
-		},
-	},
+	settings = {},
 })
 
 lspconfig.ts_ls.setup({

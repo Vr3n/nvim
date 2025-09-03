@@ -18,16 +18,17 @@ end
 
 mason.setup({
 	ensure_installed = {
-		"ts_ls",
-		"html",
-		"cssls",
-		"tailwindcss",
-		"sumnekolua",
-		"pyright",
+		"debugpy",
 		"djlint",
-		"jq",
+		"emmet-ls",
+		"firefox-debug-adapter",
+		"htmx-lsp",
+		"lua-language-server",
+		"prettier",
 		"ruff",
-		"sql_formatter",
+		"stylua",
+		"tailwindcss-language-server",
+		"typescript-language-server ",
 	},
 	ui = {
 		icons = {
