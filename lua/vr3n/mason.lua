@@ -29,6 +29,7 @@ mason.setup({
 		"stylua",
 		"tailwindcss-language-server",
 		"typescript-language-server ",
+		"basedpyright",
 	},
 	ui = {
 		icons = {
@@ -45,7 +46,17 @@ mason_lspconfig.setup()
 -- mason + nullls
 mason_nullls.setup({
 	ensure_installed = {
+		"debugpy",
+		"djlint",
+		"emmet-ls",
+		"firefox-debug-adapter",
+		"htmx-lsp",
+		"lua-language-server",
 		"prettier",
+		"ruff",
 		"stylua",
+		"tailwindcss-language-server",
+		"typescript-language-server ",
+		"basedpyright",
 	},
 })
