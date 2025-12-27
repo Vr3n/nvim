@@ -139,6 +139,7 @@ local plugins = {
 
 	-- magma python.
 	{ "dccsillag/magma-nvim", build = ":UpdateRemotePlugins" },
+
 	"lukas-reineke/indent-blankline.nvim",
 
 	"ray-x/go.nvim",
@@ -148,7 +149,12 @@ local plugins = {
 
 	{ "christoomey/vim-tmux-navigator", lazy = false },
 
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		lazy = true,
+		-- This is the critical part:
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
 
 	{ "Vigemus/iron.nvim" },
 }
