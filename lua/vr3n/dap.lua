@@ -29,43 +29,43 @@ vim.fn.sign_define("DapStopped", {
 
 -- Python Dap.
 --
-local py = require("dap-python")
-
-py.setup("uv", {
-	include_configs = true,
-	console = "internalConsole",
-})
-table.insert(dap.configurations.python, {
-	type = "python",
-	request = "launch",
-	name = "Launch file",
-	program = "${file}",
-	pythonPath = function()
-		return "python3"
-	end,
-})
-table.insert(dap.configurations.python, {
-	type = "python",
-	request = "launch",
-	name = "FastAPI",
-	program = function()
-		return "./main.py"
-	end,
-	pythonPath = function()
-		return "python"
-	end,
-})
-table.insert(dap.configurations.python, {
-	type = "python",
-	request = "launch",
-	name = "FastAPI module",
-	module = "uvicorn",
-	args = {
-		"main:app",
-		"--reload",
-		"--use-colors",
-	},
-	pythonPath = "python",
-	console = "integratedTerminal",
-})
-py.test_runner = "pytest"
+-- local py = require("dap-python")
+--
+-- py.setup("uv", {
+-- 	include_configs = true,
+-- 	console = "internalConsole",
+-- })
+-- table.insert(dap.configurations.python, {
+-- 	type = "python",
+-- 	request = "launch",
+-- 	name = "Launch file",
+-- 	program = "${file}",
+-- 	pythonPath = function()
+-- 		return "python3"
+-- 	end,
+-- })
+-- table.insert(dap.configurations.python, {
+-- 	type = "python",
+-- 	request = "launch",
+-- 	name = "FastAPI",
+-- 	program = function()
+-- 		return "./main.py"
+-- 	end,
+-- 	pythonPath = function()
+-- 		return "python"
+-- 	end,
+-- })
+-- table.insert(dap.configurations.python, {
+-- 	type = "python",
+-- 	request = "launch",
+-- 	name = "FastAPI module",
+-- 	module = "uvicorn",
+-- 	args = {
+-- 		"main:app",
+-- 		"--reload",
+-- 		"--use-colors",
+-- 	},
+-- 	pythonPath = "python",
+-- 	console = "integratedTerminal",
+-- })
+-- py.test_runner = "pytest"

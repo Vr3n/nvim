@@ -1,137 +1,83 @@
--- Set up lspconfig.
+-- Set up capabilities (Nvim 0.11+ handles many of these defaults automatically)
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- rust tools lsp.
-local rt = require("rust-tools")
-
--- LSp config
-local on_attach = function(client, bufnr)
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<leader>gd", require("telescope.builtin").lsp_definitions, bufopts)
-	vim.keymap.set("n", "<leader>gr", require("telescope.builtin").lsp_references, bufopts)
-	vim.keymap.set("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, bufopts)
-	vim.keymap.set("n", "<leader>f", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts)
-	vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, bufopts)
-	vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, bufopts)
-end
-
--- Pyright Setup
-
--- Lua LSp Setup
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-local lspconfig = require("lspconfig")
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.emmet_ls.setup({
-	-- on_attach = on_attach,
-	capabilities = capabilities,
+-- 1. Create a global LspAttach autocommand for keymaps
+-- This replaces the manual 'on_attach' passed to every setup call
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+		-- Standard Keymaps
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+
+		-- Telescope integrations
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, bufopts)
+		vim.keymap.set("n", "<leader>gr", builtin.lsp_references, bufopts)
+		vim.keymap.set("n", "<leader>D", builtin.lsp_type_definitions, bufopts)
+
+		-- Formatting and Diagnostics
+		vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, bufopts)
+		vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, bufopts)
+		vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, bufopts)
+
+		-- 2. Handle Ruff Hover Conflict (Pyright preference)
+		if client and client.name == "ruff" then
+			client.server_capabilities.hoverProvider = false
+		end
+	end,
+})
+
+-- 3. Configure Servers using vim.lsp.config (2025 Standard)
+-- Note: You no longer need to pass on_attach or capabilities to these calls
+
+-- Emmet
+vim.lsp.config('emmet_ls', {
 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php", "htmldjango" },
 	init_options = {
-		html = {
-			options = {
-				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-				["bem.enabled"] = true,
-			},
-		},
+		html = { options = { ["bem.enabled"] = true } },
 	},
 })
 
-lspconfig.clangd.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.ruff.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {},
-})
-
-lspconfig.basedpyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+-- BasedPyright
+vim.lsp.config('basedpyright', {
 	settings = {
 		basedpyright = {
 			typeCheckingMode = "standard",
 			disableOrganizeImports = true,
 		},
-		python = {
-			analysis = {
-				ignore = { "*" },
-			},
-		},
+		python = { analysis = { ignore = { "*" } } },
 	},
 })
 
-lspconfig.ts_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" },
-})
-
-lspconfig.lua_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+-- Lua LS
+vim.lsp.config('lua_ls', {
 	settings = {
 		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-				-- Setup your lua path
-				path = runtime_path,
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			telemetry = { enable = false },
 		},
 	},
 })
 
-rt.setup({
-	on_attach = on_attach,
-})
+-- 4. Enable the servers (This replaces .setup())
+local servers = { "clangd", "ruff", "basedpyright", "ts_ls", "lua_ls", "htmx", "tailwindcss", "emmet_ls" }
+for _, lsp in ipairs(servers) do
+	vim.lsp.enable(lsp)
+end
 
-lspconfig.htmx.setup({})
-
-lspconfig.tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client == nil then
-			return
-		end
-		if client.name == "ruff" then
-			-- Disable hover in favor of Pyright
-			client.server_capabilities.hoverProvider = false
-		end
-	end,
-	desc = "LSP: Disable hover capability from Ruff",
-})
+-- 6. IMPORTANT: Fix Null-ls Ruff Error
+-- Ruff is now a full LSP. Remove it from your null-ls sources entirely 
+-- and use the native ruff enabled above for better performance.
