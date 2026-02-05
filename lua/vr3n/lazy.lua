@@ -157,6 +157,8 @@ local plugins = {
 	},
 
 	{ "Vigemus/iron.nvim" },
+
+	{ "folke/snacks.nvim" },
 }
 
 opts = {

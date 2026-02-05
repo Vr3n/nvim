@@ -71,6 +71,13 @@ vim.keymap.set("n", "<leader>gll", "<cmd>G log<CR>")
 vim.keymap.set("n", "<leader>gdf", "<cmd>G diff<CR>")
 vim.keymap.set("n", "<leader>gds", "<cmd>Gvdiff<CR>")
 vim.keymap.set("n", "<leader>gt", "<cmd>G blame<CR>")
+vim.keymap.set("n", "<leader>lg", function()
+	require("snacks").lazygit()
+end)
+
+vim.keymap.set("n", "<leader>gf", function()
+	require("snacks").lazygit.log_file()
+end)
 
 -- TermToggle Remps.
 function _G.set_terminal_keymaps()
