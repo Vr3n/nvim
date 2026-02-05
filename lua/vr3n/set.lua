@@ -3,16 +3,16 @@ vim.g.mapleader = " "
 vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i:ver80"
 
 if vim.fn.has("win32") == 1 then
-    local powershell_executable = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+	local powershell_executable = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
 
-    vim.opt.shell = powershell_executable
-    vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
-    vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
-    vim.opt.shellpipe = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
-    vim.opt.shellquote = ""
-    vim.opt.shellxquote = ""
+	vim.opt.shell = powershell_executable
+	vim.opt.shellcmdflag =
+		"-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
+	vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
+	vim.opt.shellpipe = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
+	vim.opt.shellquote = ""
+	vim.opt.shellxquote = ""
 end
-
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
