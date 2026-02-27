@@ -159,6 +159,13 @@ local plugins = {
 	{ "Vigemus/iron.nvim" },
 
 	{ "folke/snacks.nvim" },
+	{
+		"ej-shafran/compile-mode.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{ "m00qek/baleia.nvim", tag = "v1.3.0" },
+		},
+	},
 }
 
 opts = {
