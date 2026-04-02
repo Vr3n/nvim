@@ -27,7 +27,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>D", builtin.lsp_type_definitions, bufopts)
 
 		-- Formatting and Diagnostics
-		vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, bufopts)
+		vim.keymap.set("n", "<leader>f", function()
+			vim.lsp.buf.format({ async = true })
+		end, bufopts)
 		vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, bufopts)
 		vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, bufopts)
 
@@ -35,22 +37,40 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client and client.name == "ruff" then
 			client.server_capabilities.hoverProvider = false
 		end
+
+		-- Disable svelte semantic tokens.
+		if client and client.name == "svelte" then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
 	end,
 })
 
 -- 3. Configure Servers using vim.lsp.config (2025 Standard)
 -- Note: You no longer need to pass on_attach or capabilities to these calls
 
+vim.lsp.config("svelte", {})
+
 -- Emmet
-vim.lsp.config('emmet_ls', {
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "php", "htmldjango" },
+vim.lsp.config("emmet_ls", {
+	filetypes = {
+		"html",
+		"typescriptreact",
+		"javascriptreact",
+		"css",
+		"sass",
+		"scss",
+		"less",
+		"php",
+		"htmldjango",
+		"svelte",
+	},
 	init_options = {
 		html = { options = { ["bem.enabled"] = true } },
 	},
 })
 
 -- BasedPyright
-vim.lsp.config('basedpyright', {
+vim.lsp.config("basedpyright", {
 	settings = {
 		basedpyright = {
 			typeCheckingMode = "standard",
@@ -61,7 +81,7 @@ vim.lsp.config('basedpyright', {
 })
 
 -- Lua LS
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = { version = "LuaJIT" },
@@ -73,11 +93,7 @@ vim.lsp.config('lua_ls', {
 })
 
 -- 4. Enable the servers (This replaces .setup())
-local servers = { "clangd", "ruff", "basedpyright", "ts_ls", "lua_ls", "htmx", "tailwindcss", "emmet_ls" }
+local servers = { "clangd", "ruff", "basedpyright", "ts_ls", "lua_ls", "htmx", "tailwindcss", "emmet_ls", "svelte" }
 for _, lsp in ipairs(servers) do
 	vim.lsp.enable(lsp)
 end
-
--- 6. IMPORTANT: Fix Null-ls Ruff Error
--- Ruff is now a full LSP. Remove it from your null-ls sources entirely 
--- and use the native ruff enabled above for better performance.

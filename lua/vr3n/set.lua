@@ -49,3 +49,9 @@ vim.cmd([[
     set splitbelow
     set splitright
 ]])
+
+vim.filetype.add({
+	extension = {
+		svelte = "svelte",
+	},
+})

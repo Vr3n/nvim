@@ -8,7 +8,6 @@ configs.setup({
 	ensure_installed = {
 		"rust",
 		"lua",
-		"php",
 		"typescript",
 		"python",
 		"javascript",
@@ -18,14 +17,14 @@ configs.setup({
 		"java",
 		"html",
 		"diff",
+		"css",
+		"jsx",
 		"gitignore",
 	}, -- one of "all", "maintained"{parsers with maintainers}, or a list of languages.
 	sync_install = false,
-	ignore_install = { "" }, -- list of parserr to ignore installing
 	highlight = {
 		enable = true,
-		disable = { "" },
-		additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = { enable = true, disable = { "yaml" } },
 	textobjects = {
@@ -86,12 +85,17 @@ configs.setup({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
-	callback = function()
-		vim.treesitter.start()
+	pattern = "*",
+	callback = function(args)
+		-- 1. Get the filetype of the buffer that was just opened
+		local ft = vim.bo[args.buf].filetype
+
+		-- 2. Check if Treesitter has a parser installed for this exact filetype
+		local lang = vim.treesitter.language.get_lang(ft)
+
+		-- 3. If a parser exists, cleanly start Treesitter for this specific buffer
+		if lang and pcall(vim.treesitter.get_parser, args.buf, lang) then
+			vim.treesitter.start(args.buf)
+		end
 	end,
 })
-
-vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.wo[0][0].foldmethod = "expr"
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

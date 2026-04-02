@@ -115,8 +115,18 @@ local plugins = {
 	-- Easy motion.
 	{ "easymotion/vim-easymotion" },
 
-	-- Signify
-	{ "mhinz/vim-signify" },
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				-- This ensures diffs are computed asynchronously
+				signcolumn = true,
+				numhl = false,
+				linehl = false,
+				word_diff = false,
+			})
+		end,
+	},
 
 	-- toggleterm
 	{ "akinsho/toggleterm.nvim", version = "*" },
