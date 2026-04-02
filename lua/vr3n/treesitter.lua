@@ -20,6 +20,7 @@ configs.setup({
 		"css",
 		"jsx",
 		"gitignore",
+		"svelte",
 	}, -- one of "all", "maintained"{parsers with maintainers}, or a list of languages.
 	sync_install = false,
 	highlight = {
@@ -84,18 +85,29 @@ configs.setup({
 	},
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 	pattern = "*",
 	callback = function(args)
-		-- 1. Get the filetype of the buffer that was just opened
-		local ft = vim.bo[args.buf].filetype
+		-- Ensure the buffer is still valid before querying it
+		if not vim.api.nvim_buf_is_valid(args.buf) then
+			return
+		end
 
-		-- 2. Check if Treesitter has a parser installed for this exact filetype
+		local ft = vim.bo[args.buf].filetype
+		if ft == "" then
+			return
+		end
+
 		local lang = vim.treesitter.language.get_lang(ft)
 
-		-- 3. If a parser exists, cleanly start Treesitter for this specific buffer
-		if lang and pcall(vim.treesitter.get_parser, args.buf, lang) then
-			vim.treesitter.start(args.buf)
+		-- Only attempt to start if a parser exists for this language
+		if lang then
+			-- Schedule asynchronously to prevent UI freezing on large files
+			vim.schedule(function()
+				if vim.api.nvim_buf_is_valid(args.buf) then
+					pcall(vim.treesitter.start, args.buf, lang)
+				end
+			end)
 		end
 	end,
 })
