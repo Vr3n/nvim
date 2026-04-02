@@ -31,24 +31,42 @@ configs.setup({
 	textobjects = {
 		select = {
 			enable = true,
-
-			-- Automatically jump forward to textobj, similar to targets.vim
-			lookahead = true,
-
+			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
 			keymaps = {
-				-- You can use the capture groups defined in textobjects.scm
-				["aa"] = "@paramter.outer",
-				["ia"] = "@paramter.outer",
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-				["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+				-- Assignments
+				["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
+				["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
+				["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+				["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+
+				-- Parameters/Arguments
+				["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+				["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+
+				-- Conditionals
+				["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+				["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+
+				-- Loops
+				["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
+				["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
+
+				-- Functions/Methods
+				["af"] = { query = "@function.outer", desc = "Select outer part of a function/method" },
+				["if"] = { query = "@function.inner", desc = "Select inner part of a function/method" },
+
+				-- Classes
+				["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+				["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+
+				-- Return statements
+				["ar"] = { query = "@return.outer", desc = "Select outer part of a return statement" },
+				["ir"] = { query = "@return.inner", desc = "Select inner part of a return statement" },
 			},
 			selection_modes = {
-				["@parameter.outer"] = "v", -- charwise
-				["@function.outer"] = "V", -- linewise
-				["@class.outer"] = "<c-v>", -- blockwise
+				["@parameter.outer"] = "v",
+				["@function.outer"] = "V",
+				["@class.outer"] = "<c-v>",
 			},
 			include_surrounding_whitespace = true,
 		},
@@ -56,30 +74,39 @@ configs.setup({
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
-				["]f"] = "@function.start",
-				["]]"] = "@class.outer",
-				["]o"] = "@loop.*",
+				["]f"] = { query = "@function.outer", desc = "Next function start" },
+				["]c"] = { query = "@class.outer", desc = "Next class start" },
+				["]a"] = { query = "@parameter.inner", desc = "Next argument start" },
+				["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+				["]l"] = { query = "@loop.outer", desc = "Next loop start" },
 			},
 			goto_next_end = {
-				["]F"] = "@function.start",
-				["]["] = "@class.outer",
+				["]F"] = { query = "@function.outer", desc = "Next function end" },
+				["]C"] = { query = "@class.outer", desc = "Next class end" },
+				["]A"] = { query = "@parameter.inner", desc = "Next argument end" },
 			},
 			goto_previous_start = {
-				["[f"] = "@function.start",
-				["[["] = "@class.outer",
+				["[f"] = { query = "@function.outer", desc = "Previous function start" },
+				["[c"] = { query = "@class.outer", desc = "Previous class start" },
+				["[a"] = { query = "@parameter.inner", desc = "Previous argument start" },
+				["[i"] = { query = "@conditional.outer", desc = "Previous conditional start" },
+				["[l"] = { query = "@loop.outer", desc = "Previous loop start" },
 			},
 			goto_previous_end = {
-				["]f"] = "@function.start",
-				["]["] = "@class.outer",
+				["[F"] = { query = "@function.outer", desc = "Previous function end" },
+				["[C"] = { query = "@class.outer", desc = "Previous class end" },
+				["[A"] = { query = "@parameter.inner", desc = "Previous argument end" },
 			},
 		},
 		swap = {
 			enable = true,
 			swap_next = {
-				["<leader>a"] = "@parameter.inner",
+				["<leader>sn"] = { query = "@parameter.inner", desc = "Swap parameter with next" },
+				["<leader>sF"] = { query = "@function.outer", desc = "Swap function with next" },
 			},
 			swap_previous = {
-				["<leader>A"] = "@parameter.inner",
+				["<leader>sp"] = { query = "@parameter.inner", desc = "Swap parameter with previous" },
+				["<leader>sf"] = { query = "@function.outer", desc = "Swap function with previous" },
 			},
 		},
 	},
