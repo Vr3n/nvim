@@ -29,7 +29,6 @@ mason.setup({
 		"stylua",
 		"tailwindcss-language-server",
 		"typescript-language-server ",
-		"basedpyright",
 	},
 	ui = {
 		icons = {
@@ -57,6 +56,5 @@ mason_nullls.setup({
 		"stylua",
 		"tailwindcss-language-server",
 		"typescript-language-server ",
-		"basedpyright",
 	},
 })

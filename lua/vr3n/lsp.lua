@@ -69,16 +69,8 @@ vim.lsp.config("emmet_ls", {
 	},
 })
 
--- BasedPyright
-vim.lsp.config("basedpyright", {
-	settings = {
-		basedpyright = {
-			typeCheckingMode = "standard",
-			disableOrganizeImports = true,
-		},
-		python = { analysis = { ignore = { "*" } } },
-	},
-})
+-- Ruff
+vim.lsp.config("ruff", {})
 
 -- Lua LS
 vim.lsp.config("lua_ls", {
@@ -93,7 +85,7 @@ vim.lsp.config("lua_ls", {
 })
 
 -- 4. Enable the servers (This replaces .setup())
-local servers = { "clangd", "ruff", "basedpyright", "ts_ls", "lua_ls", "htmx", "tailwindcss", "emmet_ls", "svelte" }
+local servers = { "clangd", "ruff", "ts_ls", "lua_ls", "htmx", "tailwindcss", "emmet_ls", "svelte" }
 for _, lsp in ipairs(servers) do
 	vim.lsp.enable(lsp)
 end
